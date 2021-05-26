@@ -1,11 +1,10 @@
 package com.miyansoft.rickycharacter.ui.main.view
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ProgressBar
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -64,19 +63,20 @@ class MainActivity : AppCompatActivity() {
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         val progressBar = findViewById<ProgressBar>(R.id.progressBar)
 
-        viewModel.getUsers().observe(this, Observer {
+        viewModel.users.observe(this) {
             it?.let { resource ->
                 when (resource.status)  {
                     Status.SUCCESS -> {
                         recyclerView.visibility = View.VISIBLE
                         progressBar.visibility = View.GONE
-                        resource.data?.let { users -> retrieveList(users) }
+                        Log.d("Success", "SetUpObserver: success")
+                        resource.data?.let { users -> retrieveList(users.results)
+                        }
                     }
 
                     Status.ERROR -> {
                         recyclerView.visibility = View.VISIBLE
                         progressBar.visibility = View.GONE
-                        Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
                     }
                     Status.LOADING -> {
                         progressBar.visibility = View.VISIBLE
@@ -84,7 +84,7 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             }
-        })
+        }
     }
 
     private fun retrieveList(users: List<User>) {

@@ -9,12 +9,12 @@
     <ImageView
         android:id="@+id/imgCharacter"
         android:layout_width="95dp"
-        android:layout_height="95dp"
+        android:layout_height="101dp"
         android:padding="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore= "contentDescription"/>
+        tools:ignore="contentDescription" />
 
     <TextView
         android:id="@+id/tvName"
@@ -25,6 +25,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/imgCharacter"
         app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/purple_500"
         android:text="Name"
         android:textStyle="bold"
         android:textSize="20sp"/>
@@ -33,14 +34,16 @@
         android:id="@+id/tvStatus"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="36dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@id/tvName"
         android:text="Status"
-        android:textStyle="bold"
-        android:textSize="20sp"/>
+        android:textStyle="italic"
+        android:textColor="@color/purple_500"
+        android:textSize="18sp"/>
 
     <TextView
         android:id="@+id/tvSpecies"
@@ -52,8 +55,9 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@id/tvName"
         android:text="Species"
-        android:textStyle="bold"
-        android:textSize="20sp"/>
+        android:textStyle="italic"
+        android:textColor="@color/purple_500"
+        android:textSize="18sp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
